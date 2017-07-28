@@ -1,12 +1,13 @@
-# urlreader
+package main
 
-Single function that support opening file, https, and s3 URLs. It returns `io.ReadCloser`:
+import (
+	"fmt"
+	"io/ioutil"
 
-```
-	import "github.com/agilebits/urlreader"
+	"github.com/agilebits/urlreader"
+)
 
-	...
-
+func main() {
 	// url := "https://twitter.com/1Password"
 	url := "file://./main.go"
 
@@ -22,4 +23,4 @@ Single function that support opening file, https, and s3 URLs. It returns `io.Re
 	}
 
 	fmt.Println(string(result))
-```
+}
