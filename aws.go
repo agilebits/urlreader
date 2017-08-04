@@ -32,12 +32,12 @@ func getAWSConfig(region string, creds *credentials.Credentials) *aws.Config {
 	}
 
 	conf.Credentials = creds
-	if region != "" {
-		conf.Region = aws.String(region)
+	if region == "" {
+		region = os.Getenv("AWS_REGION")
 	}
 
-	if conf.Region == nil || *conf.Region == "" {
-		conf.Region = aws.String(os.Getenv("AWS_REGION"))
+	if region != "" {
+		conf.Region = aws.String(region)
 	}
 
 	return conf
