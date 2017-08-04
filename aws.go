@@ -36,5 +36,9 @@ func getAWSConfig(region string, creds *credentials.Credentials) *aws.Config {
 		conf.Region = aws.String(region)
 	}
 
+	if conf.Region == nil || *conf.Region == "" {
+		conf.Region = aws.String(os.Getenv("AWS_REGION"))
+	}
+
 	return conf
 }
